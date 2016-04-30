@@ -1,0 +1,39 @@
+﻿@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+  RegisterLink(new LinkEntry { Type = "image/png", Rel = "icon", Href = Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Content/images/favicon.png")) });
+
+  string title = Convert.ToString(Model.Title);
+  string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+  const string openGraphLogo = "http://assets.kerrb.com/media/kerrb/logos/kerrb1500x1500.jpg";
+  string openGraphTitle = siteName;
+  if (string.IsNullOrEmpty(title)) {
+    openGraphTitle += ", Save money by automatically turning off, shutting down and managing Azure Virtual Machines";
+  } else {
+    openGraphTitle = string.Format("{0}: {1}", openGraphTitle, title);
+  }
+}
+<!DOCTYPE html>
+<html lang="@WorkContext.CurrentCulture" class="static @Html.ClassForPage()">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>@Html.Title(title, siteName)</title>
+  <meta name="Description" content="Kerrb, Save money by automatically turning off, shutting down and managing Azure Virtual Machines">
+  @Display(Model.Head)
+  <meta property="og:title" content="@openGraphTitle" />
+  <meta property="og:image" content="@openGraphLogo" />
+  <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+  <meta property="og:type" content="website" />
+  <script>(function (d) { d.className = "dyn" + d.className.substring(6, d.className.length); })(document.documentElement);</script>
+</head>
+<body>
+  @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+  @Display(Model.Body)
+  @Display(Model.Tail)
+</body>
+</html>
+@{
+  var timezone = WorkContext.CurrentTimeZone;
+  var timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
+}<!-- page generated at @(timestamp.ToShortDateString()) @(timestamp.ToLongTimeString()) -->

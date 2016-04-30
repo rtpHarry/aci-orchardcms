@@ -1,0 +1,49 @@
+﻿@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+  string title = Convert.ToString(Model.Title);
+  string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+  const string openGraphLogo = "http://assets.kerrb.com/media/kerrb/logos/kerrb1500x1500.jpg";
+  string openGraphTitle = siteName;
+  if (string.IsNullOrEmpty(title)) {
+    openGraphTitle += ", Save money by automatically turning off, shutting down and managing Azure Virtual Machines";
+  } else {
+    openGraphTitle = string.Format("{0}: {1}", openGraphTitle, title);
+  }
+}
+<!DOCTYPE html>
+<html lang="@WorkContext.CurrentCulture" class="static @Html.ClassForPage()">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>@Html.Title(title, siteName)</title>
+  <meta property="og:site_name" content="@siteName" />
+  <meta property="og:title" content="@openGraphTitle" />
+  <meta property="og:image" content="@openGraphLogo" />
+  <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+  <meta property="og:type" content="website" />
+  <!-- Azure Application Insights -->
+  <script type="text/javascript">
+      var appInsights=window.appInsights||function(config){
+          function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+      }({
+          instrumentationKey:"8dc2cc94-deba-4c25-a2a5-dd1e78a0c1b5"
+      });
+      
+      window.appInsights=appInsights;
+      appInsights.trackPageView();
+  </script>
+  <!-- /Azure Application Insights -->
+  @Display(Model.Head)
+  <script>(function (d) { d.className = "dyn" + d.className.substring(6, d.className.length); })(document.documentElement);</script>
+</head>
+<body>
+  @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+  @Display(Model.Body)
+  @Display(Model.Tail)
+</body>
+</html>
+@{
+  var timezone = WorkContext.CurrentTimeZone;
+  var timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
+}<!-- page generated at @(timestamp.ToShortDateString()) @(timestamp.ToLongTimeString()) -->

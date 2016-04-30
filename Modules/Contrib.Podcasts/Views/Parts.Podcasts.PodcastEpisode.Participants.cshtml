@@ -1,0 +1,23 @@
+﻿@{
+  int index = 0;
+  foreach (var person in @Model.EpisodeParticipants) {
+    index++;
+    if (index == 1) { 
+      <h2>Episode @(Model.ParticipantType)s: </h2>
+    }
+  
+  <div style="margin-left: 15px">
+    @if (!String.IsNullOrEmpty(person.Url)) {
+      <text>&raquo;</text>
+      <a href="@(person.Url)">@T(person.Name)</a>
+    } else {
+      <text>&raquo;</text>
+      @T(person.Name)
+    }
+    @if (!string.IsNullOrEmpty(person.TwitterName)) {
+      var twitterName = string.Format("(@{0})", person.TwitterName);
+      <a href="http://www.twitter.com/@(person.TwitterName)">@twitterName</a>
+    }
+  </div>
+  }  
+}

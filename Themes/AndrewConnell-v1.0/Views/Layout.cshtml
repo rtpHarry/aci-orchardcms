@@ -1,0 +1,180 @@
+﻿@functions {
+  // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+  string CalcuClassify(string[] zoneNames, string classNamePrefix) {
+    var zoneCounter = 0;
+    var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+    return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+  }
+}
+@{
+  /* Global includes for the theme
+  ***************************************************************/
+  Style.Include("all.min.css").SetAttribute("media", "screen");
+  Style.Include("print.min.css").SetAttribute("media", "print");
+
+  /* Google code prettify (http://code.google.com/p/google-code-prettify) */
+  Style.Include("prettify.min.css").AtHead();
+  Script.Include("http://google-code-prettify.googlecode.com/svn/loader/run_prettify.js").AtFoot();
+  
+  Script.Require("jQuery").AtHead().UseCdn(true);
+  Script.Include("ie.min.js").UseCondition("IE").AtHead();
+
+  /* Some useful shortcuts or settings
+  ***************************************************************/
+
+  Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+  WorkContext.Layout.Footer.Add(New.User(), "5"); // Login and dashboard links
+  WorkContext.Layout.Footer.Add(New.Copyright(), "10"); // Login and dashboard links
+
+  /* Last bit of code to prep the layout wrapper
+  ***************************************************************/
+
+  Model.Id = "wrapper";
+  var tag = Tag(Model, "div"); // using Tag so the layout div gets the classes, id and other attributes added to the Model
+}
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180718108737240";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div id="wrapper">
+  <div class="w1">
+    <header id="header">
+      <div class="header-frame">
+        @Zone(Model.Header)
+        <strong class="logo">
+          <a href="/">
+            <img src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo.png"))" width="385" height="99" alt="Andrew Connell">
+            <img class="logo-mobile" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo-mobile.png"))" width="259" height="101" alt="Andrew Connell">
+          </a>
+        </strong>
+        <!--social-networks-->
+        <div class="social-networks">
+          <div class="row" style="text-align: right">
+            <a href="http://www.facebook.com/jaconnell" title="Andrew Connell on Facebook" target="_blank">
+              <img style="display:inline" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo-facebook.png"))" style="border: 0px" alt="Andrew Connell on Facebook" /></a>
+            <a href="http://www.twitter.com/andrewconnell" title="Andrew Connell on Twitter" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo-twitter.png"))" style="border: 0px" alt="Andrew Connell on Twitter" /></a>
+            <a href="http://www.linkedin.com/in/andrewconnell" title="Andrew Connell on LinkedIn" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo-linkedin.png"))" style="border: 0px" alt="Andrew Connell on LinkedIn" /></a>
+            <a href="http://www.youtube.com/user/jaconnell" title="Andrew Connell on YouTube" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-youtube.png"))" style="border: 0px" alt="Andrew Connell on YouTube" /></a>
+            <a href="http://instagram.com/andrewconnell1" title="Andrew Connell on Instagram" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-instagram.png"))" style="border: 0px" alt="Andrew Connell on YouTube" /></a>
+            <a href="http://feeds.andrewconnell.com/AndrewConnell" title="Subscribe to Andrew Connell's Blog" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-rss.png"))" style="border: 0px" alt="Subscribe to Andrew Connell's Blog" /></a>
+          </div>
+          <div class="row" style="text-align: right">
+            <a href="http://www.pluralsight.com/author/andrew-connell" title="Andrew Connell on Pluralsight" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-pluralsight.png"))" style="border: 0px" alt="Andrew Connell on Pluralsight" /></a>
+            <a href="http://www.github.com/AndrewConnell" title="Andrew Connell on GitHub" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-github.png"))" style="border: 0px" alt="Andrew Connell on GitHub" /></a>
+            <a href="http://stackoverflow.com/users/306347/andrew-connell" title="Andrew Connell on Stackoverflow" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-stackoverflow.png"))" style="border: 0px" alt="Andrew Connell on Stackoverflow" /></a>
+            <a href="http://sharepoint.stackexchange.com/users/401/andrew-connell" title="Andrew Connell on the SharePoint StackExchange" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-sharepointexchange.png"))" style="border: 0px" alt="Andrew Connell on the SharePoint StackExchange" /></a>
+            <a href="http://www.codeplex.com/site/users/view/andrewconnell" title="Andrew Connell on CodePlex" target="_blank">
+              <img style="display:inline;margin-left: 10px;" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/icon-codeplex.png"))" style="border: 0px" alt="Andrew Connell on CodePlex" /></a>
+          </div>
+        </div>
+      </div>
+      <!--panel-->
+      <div class="panel">
+        @if (Model.Search != null) {
+          <!--search-block-->
+          <div class="search-block">
+            <a href="#" class="opener">search</a>
+            <!--slide-->
+            <div class="slide">
+              <!--search-form-->
+              @Zone(Model.Search)
+            </div>
+          </div>
+        }
+        <!--menu-->
+        <div class="menu">
+          <a href="#" class="opener">menu</a>
+          <!--slide-->
+          <div class="slide">
+            <!--nav-->
+            @Zone(Model.Navigation)
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- promo block -->
+    <div class="promo-block">
+      <p><a class="logo-mvp" href="http://mvp.microsoft.com/en-us/mvp/Andrew%20Connell-21083"><img width="80" height="120" alt="Microsoft MVP Logo" src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/logo-mvp.png"))" /></a></p>
+      <div id="promo-block-text" class="text">
+          <!-- featured zone -->
+          @Zone(Model.Featured)
+          <!-- featured zone -->
+      </div>      
+    </div>
+
+    <div id="main">
+      <!-- before main -->
+      @if (Model.BeforeMain != null) {
+        @Zone(Model.BeforeMain)
+      }
+      <!-- content -->
+      <section id="content">
+        @if (Model.Messages != null) {
+          @Zone(Model.Messages)
+        }
+        @if (Model.BeforeContent != null) {
+          @Zone(Model.BeforeContent)
+        }
+        @* the model content for the page is in the Content zone @ the default position (nothing, zero, zilch) *@
+        @if (Model.Content != null) {
+          @Zone(Model.Content)
+        }
+        @if (Model.AfterContent != null) {
+          @Zone(Model.AfterContent)
+        }
+      </section>
+      <!-- sidebar -->
+      <aside id="sidebar">
+        @if (Model.Sidebar != null) {
+          @Zone(Model.Sidebar)
+        }
+      </aside>
+      @if (Model.AfterMain != null) {
+        @Zone(Model.AfterMain)
+      }
+    </div>
+  </div>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="footer-holder">
+      <div class="footer-frame">
+        <!--footer-content-->
+        <div class="footer-content">
+          <!--badges-->
+          @if (Model.FooterQuadFirst != null) {
+              @Zone(Model.FooterQuadFirst)
+          }
+          <!--nav-->
+          @if (Model.FooterQuadSecond != null) {
+            @Zone(Model.FooterQuadSecond)
+          }
+          <div class="widgets-holder">
+            @if (Model.FooterQuadThird != null) {
+              @Zone(Model.FooterQuadThird)
+            }
+            @if (Model.FooterQuadFourth != null) {
+              @Zone(Model.FooterQuadFourth)
+            }
+          </div>
+        </div>
+        <div class="footer-bottom">
+          @Zone(Model.Footer)
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

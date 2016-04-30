@@ -1,0 +1,30 @@
+﻿@using Orchard.Blogs.Extensions;
+@using Orchard.Blogs.Models;
+@{
+  IEnumerable<KeyValuePair<ArchiveData, int>> archives = Model.Archives;
+  var dateTimeLocalization = WorkContext.Resolve<Orchard.Localization.Services.IDateTimeFormatProvider>();
+  var monthNames = dateTimeLocalization.MonthNames.ToArray();
+}
+<ul class="accordion">
+  @{
+    int lastYear = archives.First().Key.Year;
+    int firstYear = archives.Last().Key.Year;
+  }
+  @for (int year = lastYear; year >= firstYear; year--) {
+    var yearMonths = archives.Where(m => m.Key.Year == year);
+    var openerId = "BlogArchivePanelYear" + @year;
+    <li>
+      <a href="#" class="opener" id="@openerId">@year</a>
+      <div class="slide">
+        @Html.UnorderedList(yearMonths, (t, i) => Html.Link(Html.Raw(string.Format("{0} <span>({1} posts)</span>", monthNames[t.Key.ToDateTime().Month - 1], t.Value)), Url.BlogArchiveMonth((BlogPart)Model.Blog, t.Key.Year, t.Key.Month)), "archiveMonthList")
+      </div>
+    </li>
+  }
+</ul>
+<script type="text/javascript">
+  // Open the most recent year archive
+  $(document).ready(function(){
+    @{var currentYearPanel = "BlogArchivePanelYear" + @lastYear;}
+    $("#@currentYearPanel").click();
+  });
+</script>

@@ -1,0 +1,47 @@
+﻿@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+  Script.Include("html5.js").UseCondition("lt IE 9").AtHead();
+
+  string title = Convert.ToString(Model.Title);
+  string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+  string openGraphLogo = "http://assets.microsoftcloudshow.com/media/mscloudshow/logos/mscloudshow1500x1500.jpg";
+  string openGraphTitle = string.Format("Microsoft Cloud Show: {0}", Convert.ToString(Model.Title));
+}
+<!DOCTYPE html>
+<html lang="@WorkContext.CurrentCulture" class="static @Html.ClassForPage()">
+<head>
+  <meta charset="utf-8" />
+  <title>@Html.Title(title, siteName)</title>
+  <meta name="viewport" content="width=device-width">
+  <meta property="og:site_name" content="@siteName" />
+  <meta property="og:title" content="@openGraphTitle" />
+  <meta property="og:image" content="@openGraphLogo" />
+  <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+  <meta property="og:type" content="website" />
+  <!-- Azure Application Insights -->
+  <script type="text/javascript">
+      var appInsights=window.appInsights||function(config){
+          function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
+      }({
+          instrumentationKey:"1783882c-2372-419f-832d-8ec0c5a6e1d8"
+      });
+      
+      window.appInsights=appInsights;
+      appInsights.trackPageView();
+  </script>
+  <!-- /Azure Application Insights -->
+  @Display(Model.Head)
+  <link rel="alternate" type="application/rss+xml" title="Microsoft Cloud Show" href="http://feeds.microsoftcloudshow.com/microsoftcloudshow" />
+  <script>(function (d) { d.className = "dyn" + d.className.substring(6, d.className.length); })(document.documentElement);</script>
+</head>
+<body>
+  @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+  @Display(Model.Body)
+  @Display(Model.Tail)
+</body>
+</html>
+@{
+  var timezone = WorkContext.CurrentTimeZone;
+  var timestamp = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timezone);
+}<!-- page generated at @(timestamp.ToShortDateString()) @(timestamp.ToLongTimeString()) -->

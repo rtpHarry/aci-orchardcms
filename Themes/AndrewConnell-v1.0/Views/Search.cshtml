@@ -1,0 +1,19 @@
+﻿@model Orchard.Tags.ViewModels.TagsSearchViewModel
+@{ 
+  Html.AddTitleParts(T("Contents Tagged with {0}", Model.TagName).ToString());
+  Model.List.Classes.Add("tagged-posts");
+  Model.List.Classes.Add("content-items");
+
+  var headingString = T("Content Tagged with '<span>{0}</span>'", Model.TagName);
+  var subHeadingString = T("All content that has been tagged with the tag {0}. To view content from other tags, use the <mark>tag cloud</mark> in the right-hand sidebar to pick the specified tag.", Model.TagName);
+}
+<h1 id="ThisPageTitle">Contents Tagged with @Model.TagName</h1>
+<script type="text/javascript">
+  // update the page heading (hack)
+  $("#promo-block-text").html("<h1>@headingString</h1><p>@subHeadingString</p>");
+  // fix if user hits page with JS enabled, hide H1 below, otherwise (like if
+  // search bot hits page, leave it showing)
+  $("#ThisPageTitle").hide();
+</script>
+@Display(Model.List)
+@Display(Model.Pager)

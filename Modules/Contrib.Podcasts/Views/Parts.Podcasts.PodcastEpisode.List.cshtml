@@ -1,0 +1,8 @@
+﻿@{
+  IEnumerable<object> episodes = Model.ContentItems;
+  Model.ContentItems.Classes.Add("content-items");
+}
+@Display(Model.ContentItems)
+@if (episodes == null || !episodes.Any()) {
+  <p>@T("There are no episodes for this podcast.")</p>
+}

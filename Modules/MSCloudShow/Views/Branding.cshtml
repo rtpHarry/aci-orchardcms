@@ -1,0 +1,4 @@
+﻿@{
+  var homeUrl = Href("~/");
+}
+<a href="@homeUrl" style="font-size:40px; color:#ffffff; "><img src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Content/logo.png"))">@WorkContext.CurrentSite.SiteName</a>
