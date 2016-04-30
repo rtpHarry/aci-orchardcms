@@ -1,0 +1,18 @@
+﻿@{
+  /* DEPENDS ON THE MODULES BEING ENABLED: URL ALTERNATES & WIDGET ALTERNATES */
+  
+  var tag = Tag(Model.Menu, "ul");
+
+  var items = (IList<dynamic>)Enumerable.Cast<dynamic>(Model.Menu.Items);
+
+  if (items.Any()) {
+    items[0].Classes.Add("first");
+    items[items.Count - 1].Classes.Add("last");
+  }    
+}
+<nav class="nav">
+  <strong class="title">My Website</strong>
+  @tag.StartElement
+  @DisplayChildren(Model.Menu)
+  @tag.EndElement
+</nav>

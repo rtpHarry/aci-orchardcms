@@ -1,0 +1,30 @@
+﻿@model Orchard.Tags.ViewModels.TagsSearchViewModel
+@{ 
+  Html.AddTitleParts(T("Contents Tagged with {0}", Model.TagName).ToString());
+  Model.List.Classes.Add("tagged-posts");
+  Model.List.Classes.Add("content-items");
+
+  var headingString = T("Blog Posts Tagged with '<span>{0}</span>'", Model.TagName);
+
+  // figure out if this is a search bot
+  var searchBots = new List<string>() {"teoma", "alexa", "froogle", "gigabot", "inktomi", "looksmart", "url_spider_sql", "firefly", "nationaldirectory", "ask jeeves", "tecnoseek", "infoseek", "webfindbot", "girafabot",  "crawler", "www.galaxy.com", "googlebot", "scooter", "slurp", "msnbot", "appie", "fast", "webbug", "spade", "zyborg", "rabaz", "baiduspider", "feedfetcher-google", "technoratisnoop", "rankivabot", "mediapartners-google", "sogou web spider", "webalta crawler", "facebookexternalhit"};
+  var requesterIsBot = false;
+  foreach (var bot in searchBots){
+    if (Request.UserAgent.ToLower().Contains(bot))
+    {
+      requesterIsBot = true;
+      break;
+    }
+  }
+}
+@if(requesterIsBot){
+  <h1>Contents Tagged with @Model.TagName</h1>
+} else {
+  <script type="text/javascript">
+    $(document).ready(function($){
+      $("div.titleBox .container").prepend("<h1 class=\"big pull-left\">@headingString</h1>");
+    });
+  </script>
+}
+@Display(Model.List)
+@Display(Model.Pager)

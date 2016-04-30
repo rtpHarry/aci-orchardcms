@@ -1,0 +1,6 @@
+Name: Andrew Connell v1.0
+Author: Andrew Connell
+Website: http://www.andrewconnell.com
+Description: Custom theme for AndrewConnell.com
+Version: 1.0
+Zones: Header, Search, Navigation, Featured, BeforeMain, Messages, BeforeContent, Content, Sidebar, AfterContent, AfterMain, FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Footer

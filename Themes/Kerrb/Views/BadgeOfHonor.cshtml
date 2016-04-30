@@ -1,0 +1,18 @@
+﻿@{
+  var homeUrl = Href("~/");
+  int startYear = 2013;
+  int currentYear = DateTime.Now.Year;
+  string copyrightString = "";
+  if (startYear == currentYear) {
+    copyrightString = currentYear.ToString();
+  }
+  else {
+    copyrightString = string.Format("{0} - {1}", startYear, currentYear);
+  }
+}
+<p>
+  &copy; Copyright @copyrightString <a href="@homeUrl">@WorkContext.CurrentSite.SiteName</a>. All Rights Reserved.
+</p>
+<p>
+  <em>Microsoft<sup>&reg;</sup> Windows<sup>&reg;</sup> Azure and Microsoft<sup>&reg;</sup> SharePoint<sup>&reg;</sup> 2013 are either registered trademarks or trademarks of Microsoft Corporation in the United States and/or other countries.</em>
+</p>

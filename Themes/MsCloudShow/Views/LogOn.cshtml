@@ -1,0 +1,57 @@
+﻿@using Orchard.ContentManagement
+
+@{
+  var userCanRegister = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().UsersCanRegister;
+  var enableLostPassword = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().EnableLostPassword;
+}
+
+@{
+  Layout.Title = "Log In";
+}
+
+<div class="row">
+  <div class="span6 offset3 text-center form-container">
+
+    <hr>
+    @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }))) {
+      <div id="login-form" class="form-horizontal">
+        <div style="color:#778489;">
+          <p>
+            @T("Please enter your username and password.")
+
+            @if (enableLostPassword) { <text> </text> @Html.ActionLink(T("Lost your Password?").Text, "RequestLostPassword") }
+          </p>
+          <div style="color:#ffffff; ">
+            @Html.ValidationSummary(T("Login was unsuccessful. Please correct the errors and try again.").ToString())
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.TextBox("userNameOrEmail", "", new { id = "username-email", @class = "input-xlarge", placeholder = "username / email", autofocus = "autofocus" })
+              @Html.ValidationMessage("userNameOrEmail")
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.Password("password", null, new { @class = "input-xlarge", placeholder = "password" })
+              @Html.ValidationMessage("password")
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <button class="btn-main" type="submit"><i class="icon-signin"></i> @T("Sign In")</button>
+          </div>
+
+          @if (userCanRegister) { <a class="small-message" href="/Users/Account/Register"><small>Need An Account?</small></a> }
+        </div>
+
+      </div>
+    }
+  </div>
+</div>

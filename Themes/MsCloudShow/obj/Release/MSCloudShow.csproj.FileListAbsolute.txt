@@ -1,0 +1,6 @@
+D:\Dev\OrchardCmsDev.git\build\Compile\Sharkfin.dll.config
+D:\Dev\OrchardCmsDev.git\build\Compile\Sharkfin.dll
+D:\Dev\OrchardCmsDev.git\build\Compile\Sharkfin.pdb
+D:\Dev\OrchardCmsDev.git\src\Orchard.Web\Themes\MsCloudShow\obj\Release\MSCloudShow.csprojResolveAssemblyReference.cache
+D:\Dev\OrchardCmsDev.git\src\Orchard.Web\Themes\MsCloudShow\obj\Release\Sharkfin.dll
+D:\Dev\OrchardCmsDev.git\src\Orchard.Web\Themes\MsCloudShow\obj\Release\Sharkfin.pdb

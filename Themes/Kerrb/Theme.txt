@@ -1,0 +1,9 @@
+Name: Kerrb
+Author: Andrew Connell Inc
+Website: http://www.andrewconnell.com/
+Description: Theme used for the Kerrb marketing site
+Version: 1.0
+BaseTheme: TheThemeMachine
+# todo: provide tags
+# Tags: Classic, Serif
+Zones: Header, Navigation, Slider, Breadcrumb, TripelFirst, TripelSecond, TripelThird, AsideFirst, Content,  AsideSecond, AfterContent, AfterMain,  FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Footer, FooterSocialMedia

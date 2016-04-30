@@ -1,0 +1,70 @@
+﻿@{
+  Layout.Title = "Register";
+}
+
+<div class="row">
+  <div class="span6 offset3 text-center form-container">
+
+    <ul class="social-icons">
+      <li><a class="twitter" href="#" target="_blank"><i class="icon-twitter icon-3x"></i></a></li>
+      <li><a class="facebook" href="#" target="_blank"><i class="icon-facebook icon-3x"></i></a></li>
+      <li><a class="google" href="#" target="_blank"><i class="icon-google-plus icon-3x"></i></a></li>
+    </ul>
+
+    <hr>
+    @using (Html.BeginFormAntiForgeryPost()) {
+      <div id="signup-form" class="form-horizontal">
+        <div style="color:#778489;">
+          <p>@T("Use the form below to create a new account.")</p>
+          <p>@T("Passwords are required to be a minimum of {0} characters in length.", ViewData["PasswordLength"])</p>
+          <div style="color:#ffffff; ">
+            @Html.ValidationSummary(T("Account creation was unsuccessful. Please correct the errors and try again.").ToString())
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.TextBox("username", null, new { @class = "input-xlarge", placeholder = "Full Name" })
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.TextBox("email", null, new { @class = "input-xlarge", placeholder = "Email" })
+              @Html.ValidationMessage("email")
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.Password("password", null, new { @class = "input-xlarge", placeholder = "Password" })
+              @Html.ValidationMessage("password")
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-prepend">
+              @Html.Password("confirmPassword", null, new { @class = "input-xlarge", placeholder = "ConfirmPassword" })
+              @Html.ValidationMessage("confirmPassword")
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <button class="btn-main" type="submit"><i class="icon-user"></i> @T("Register")</button>
+          </div>
+          <a class="small-message" href="/Users/Account/LogOn"><small>Already Registered?</small></a>
+        </div>
+
+      </div>
+    }
+  </div><!--End Span6-->
+
+</div>

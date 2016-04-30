@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Placement>
+  <Place Parts_Podcasts_Podcast="Content:10"/>
+  <Place Parts_Podcasts_Podcast_Fields="Content:2"/>
+  <Place Podcast_DeleteButton="Sidebar:25" />
+
+  <Place Parts_Podcasts_PodcastEpisode_Fields="Content:2"/>
+  <Place PodcastEpisode_DeleteButton="Sidebar:25" />
+  
+  <Place Parts_Podcasts_RecentPodcastEpisodes="Content:2"/>
+
+  <Match ContentType="Podcast">
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Metadata="-"
+             Parts_Podcasts_Podcast_Description="Content:before"
+             Parts_Podcasts_PodcastEpisode_List="Content" />
+    </Match>
+    <Match DisplayType="DetailAdmin">
+      <Place Parts_Podcasts_Episode_ListAdmin="Content:5"
+             Parts_Podcasts_Podcast_Manage="Actions"
+             Parts_Podcasts_Podcast_Description="Actions:after"
+             Parts_Podcasts_Podcast="-" />
+    </Match>
+    <Match DisplayType="SummaryAdmin">
+      <Place Parts_Podcasts_Podcast_SummaryAdmin="Actions:10" />
+      <Place Parts_Podcasts_Podcast_Description="Actions:before" />
+    </Match>
+  </Match>
+  
+  <Match ContentType="PodcastEpisode">
+    <Match DisplayType="Detail">
+      <Place Parts_Common_Metadata="-" />
+      <Place Parts_Podcasts_PodcastEpisode_Metadata="Header:10" />
+      <Place Parts_Podcasts_PodcastEpisode_Participants="Content:5" />
+      <Place Parts_Podcasts_PodcastEpisode_ShowNotes="Content:10"/>
+      <Place Parts_Podcasts_PodcastEpisode_ShowTranscript="Content:15"/>
+      <Place Fields_Common_Text="-" />
+      <Place Fields_DateTime="-" />
+    </Match>
+
+    <Match DisplayType="Summary">
+      <Place Parts_Podcasts_PodcastEpisode_Summary="Content:5" />
+      <Place Parts_Title_Summary="-" />
+      <Place Parts_Common_Metadata_Summary="-" />
+      <Place Fields_Common_Text="-" />
+      <Place Fields_DateTime="-" />
+    </Match>
+  </Match>
+</Placement>

@@ -1,0 +1,7 @@
+Name: Microsoft Cloud Show
+Author: Andrew Connell Inc
+Website: http://www.andrewconnell.com/
+Description: Theme originally based on the Sharkfin bootstrap theme.
+Version: 1.0
+BaseTheme: TheThemeMachine
+Zones: Header, Navigation, Slider, TripelFirst, TripelSecond, TripelThird, Content, AsideSecond, Clients, FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Messages, AfterMain, Footer

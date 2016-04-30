@@ -1,0 +1,6 @@
+﻿@{
+  var homeUrl = Href("~/");
+  var siteName = WorkContext.CurrentSite.SiteName;
+  var siteLogo = @Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Content/images/kerrb.png"));
+}
+<a href="@homeUrl" title="@siteName"><img src="@siteLogo" alt="@siteName" /></a>

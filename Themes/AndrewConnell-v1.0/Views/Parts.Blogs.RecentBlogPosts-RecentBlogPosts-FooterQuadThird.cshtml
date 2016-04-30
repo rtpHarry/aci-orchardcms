@@ -1,0 +1,16 @@
+﻿@using Orchard.ContentManagement;
+@{
+  /* DEPENDS ON THE MODULES BEING ENABLED: URL ALTERNATES & WIDGET ALTERNATES */
+  
+  IEnumerable<object> blogPosts = Model.ContentItems.ContentItems;
+}
+<div class="widget">
+  <strong class="title">Recent Blog Posts</strong>
+  <ul class="recent-articles">
+    @foreach (dynamic post in blogPosts) {
+      string title = post.Title;
+      ContentItem item = post.ContentItem;
+      <li>@Html.ItemDisplayLink(title, item)</li>
+    }
+  </ul>
+</div>
