@@ -1,0 +1,9 @@
+.DS_Store
+
+App_Data/CompilationSnapshots
+App_Data/Logs
+App_Data/Warmup
+App_Data/cache.dat
+App_Data/hrestart.txt
+App_Data/Sites/*
+App_Data/Dependencies
