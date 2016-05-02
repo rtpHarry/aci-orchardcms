@@ -15,6 +15,7 @@ This is the **only** time I am modifying configuration information in the code. 
 
 To make this work, I had to do three things to my Azure Web App & codebase:
 
+
 ## Configure Autofac to load Orchard's Settings Azure Storage Blob Handler
 
 This is done within the `/Config/Host.config` file:
@@ -50,12 +51,14 @@ This is done within the `/Config/Host.config` file:
  </component>
   ```
 
+
 ## Copy Orchard's Azure Module Assembly to Root
 
 Seems Orchard could never see the assembly for the module **Orchard.Azure** until I copied it to the root of the project, so I need to remember every time I update the Orchard version, I copy the files:
 
 - `Orchard.Azure.dll`
-- `Orchard.Azure.config.dll`
+- `Orchard.Azure.dll.config`
+- `Microsoft.WindowsAzure.Configuration.dll`
 
 From `/Modules/Orchard.Azure/bin` to the root of the web project: `/bin`.
 
@@ -69,4 +72,4 @@ The above steps simply tell orchard to look in the app settings for the web appl
 
 The storage account must contain a folder `Sites` that contains the same `Settings.txt` file typically found in `\App_Data\Sites`.
 
-> Ensure **Slot Setting** is checked assuming you don't want this shared with other deployment slots. If checked, each deployment slot can have it's own value, which I want for my production & development deployment slots.
+> Ensure **Slot Setting** is checked assuming you don't want this shared with other deployment slots. If checked, each deployment slot can have its own value, which I want for my production & development deployment slots.
