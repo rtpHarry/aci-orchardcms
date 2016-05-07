@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.3.3 - May 7, 2016
+
+- Upgrade **Contrib.Podcasts** module to 1.5 ([a6c7d79](https://github.com/andrewconnell/aci-orchardcms/commit/a6c7d790774e1c14713483c694ee5341fe26fb79))
+  - improvements to admin UX
+
 ## 1.9.3.2 - May 6, 2016
 
 - Upgrade **Contrib.Podcasts** module to 1.4 ([11bcf10](https://github.com/andrewconnell/aci-orchardcms/commit/11bcf102c1d5df6d8f7721b75a54d138d77f3d1b))
