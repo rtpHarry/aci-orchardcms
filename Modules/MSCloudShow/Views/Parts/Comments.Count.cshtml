@@ -1,5 +1,0 @@
-﻿@using Orchard.Comments.ViewModels;
-@{
-  Orchard.ContentManagement.ContentItem contentItem = Model.ContentPart.ContentItem;
-}
-<p class="blue"><small><em><i class="icon-comment"></i> <a href="@Url.ItemDisplayUrl(contentItem)">@T.Plural("1 Comment", "{0} Comments", (int)Model.CommentCount)</a></em></small></p>
