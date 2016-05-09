@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.3.4 - May 9, 2016
+
+- Upgrade **Contrib.Podcasts** module to 1.6 ([502d311](https://github.com/andrewconnell/aci-orchardcms/commit/502d31129879323337d929437fd75ab912cecff5))
+  - updated elements in the dynamic RSS feed
+- Removed themes from `Modules` folder ([09b3874](https://github.com/andrewconnell/aci-orchardcms/commit/09b3874be1e4e65ffab9d9148f7a45772cdd26f5), Closes [#9](https://github.com/andrewconnell/aci-orchardcms/issues/9))
+
 ## 1.9.3.3 - May 7, 2016
 
 - Upgrade **Contrib.Podcasts** module to 1.5 ([a6c7d79](https://github.com/andrewconnell/aci-orchardcms/commit/a6c7d790774e1c14713483c694ee5341fe26fb79))
