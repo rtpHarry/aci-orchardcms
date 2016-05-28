@@ -1,5 +1,9 @@
 # Changelog
 
+## next
+
+- Modified deployment so post deployment script run to automatically copy Azure DLL's from Orchard.Azure to root `\bin` (Closes [#8](https://github.com/andrewconnell/aci-orchardcms/issues/8))
+
 ## 1.9.3.4 - May 9, 2016
 
 - Upgrade **Contrib.Podcasts** module to 1.6 ([502d311](https://github.com/andrewconnell/aci-orchardcms/commit/502d31129879323337d929437fd75ab912cecff5))

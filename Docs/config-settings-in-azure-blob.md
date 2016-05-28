@@ -54,13 +54,11 @@ This is done within the `/Config/Host.config` file:
 
 ## Copy Orchard's Azure Module Assembly to Root
 
-Seems Orchard could never see the assembly for the module **Orchard.Azure** until I copied it to the root of the project, so I need to remember every time I update the Orchard version, I copy the files:
+Seems Orchard could never see the assembly for the module **Orchard.Azure** until I copied it to the root of the project. These files are copied from `/Modules/Orchard.Azure/bin` to the root of the web project (`/bin`) on each deployment using a post deployment script (`post-deployment.cmd`), configured by adding an app setting **POST_DEPLOYMENT_ACTION** to the web app pointing to this file.
 
 - `Orchard.Azure.dll`
 - `Orchard.Azure.dll.config`
 - `Microsoft.WindowsAzure.Configuration.dll`
-
-From `/Modules/Orchard.Azure/bin` to the root of the web project: `/bin`.
 
 
 ## Add App Setting in Azure Web App
