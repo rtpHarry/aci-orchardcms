@@ -1,0 +1,16 @@
+﻿@*
+    @Model.RequestedUrl
+    @Model.ReferrerUrl
+*@
+
+<article class="post">
+  <p style="text-align:center"><img src="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Images/404-alderaan.gif"))" /></p>
+  <p>@T("I  looked... I swear I looked for it and I have no idea where it is... it's like Alderaan...").Text</p>
+  <p>@T("It's like it was never there... the link you requested... yeah... so, there's nothing there.").Text</p>
+  <p>@T("Tell you what why don't you try searching for it using the control in the top of the page?").Text</p>
+</article>
+<script type="text/javascript">
+  $(document).ready(function($){
+    $("#promo-block-text").html('<div class="zone zone-featured"><h1>404 - File Not Found</h1></div>');
+  });
+</script>

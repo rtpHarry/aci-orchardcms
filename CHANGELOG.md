@@ -2,6 +2,7 @@
 
 ## next
 
+- Added custom 500 & 404 views for ACCOM (Closes [#10](https://github.com/andrewconnell/aci-orchardcms/issues/10))
 - Modified deployment so post deployment script run to automatically copy Azure DLL's from Orchard.Azure to root `\bin` (Closes [#8](https://github.com/andrewconnell/aci-orchardcms/issues/8))
 
 ## 1.9.3.4 - May 9, 2016
