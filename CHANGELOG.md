@@ -1,7 +1,9 @@
 # Changelog
 
-## next
+## 1.9.3.5 - June 9, 2016
 
+- Update MSCloudshow theme for admin changes in **Contrib.Podcasts** 1.7 ([421d55a](https://github.com/ngOfficeUIFabric/ng-officeuifabric/commit/421d55a))
+- Update **Contrib.Podcasts** module to 1.7 ([54f9866](https://github.com/ngOfficeUIFabric/ng-officeuifabric/commit/54f9866))
 - Added custom 500 & 404 views for ACCOM (Closes [#10](https://github.com/andrewconnell/aci-orchardcms/issues/10))
 - Modified deployment so post deployment script run to automatically copy Azure DLL's from Orchard.Azure to root `\bin` (Closes [#8](https://github.com/andrewconnell/aci-orchardcms/issues/8))
 
